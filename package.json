@@ -1,5 +1,5 @@
 {
-  "name": "react-svg-arrow",
+  "name": "react-arrow",
   "version": "0.0.0-development",
   "description": "a simple svg arrow component",
   "main": "lib/index.js",
@@ -9,7 +9,7 @@
     "lint:watch": "esw --watch src test stories",
     "flow": "flow",
     "flow:coverage": "for file in src/**.js test/**.js; do echo $file; flow coverage $file; done",
-    "flow:watch": "flow-watch -e js,js.flow,flowconfig --ignore lib/ --ignore node_modules/ --watch .flowconfig --watch src/ --watch test/",
+    "flow:watch": "flow-watch -e js,js.flow,flowconfig --ignore lib/ --ignore node_modules/ --watch .flowconfig --watch src/ --watch stories/ --watch test/",
     "gen-flow-files": "flow gen-flow-files src/ --out-dir lib",
     "copy-flow-files": "cd src; copy *.js.flow **/*.js.flow ../lib",
     "build": "rimraf lib && babel src --out-dir lib",
@@ -42,7 +42,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jcoreio/react-svg-arrow.git"
+    "url": "https://github.com/jcoreio/react-arrow.git"
   },
   "keywords": [
     "es2015",
@@ -52,9 +52,9 @@
   "author": "Andy Edwards",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jcoreio/react-svg-arrow/issues"
+    "url": "https://github.com/jcoreio/react-arrow/issues"
   },
-  "homepage": "https://github.com/jcoreio/react-svg-arrow#readme",
+  "homepage": "https://github.com/jcoreio/react-arrow#readme",
   "devDependencies": {
     "@jedwards1211/eslint-config-flow": "^1.0.0",
     "@jedwards1211/eslint-config-react": "^2.0.1",
@@ -100,6 +100,7 @@
     "react": "0.14.x || ^15.0.0"
   },
   "dependencies": {
+    "isotrope": "^1.0.0",
     "prop-types": "^15.0.0"
   }
 }

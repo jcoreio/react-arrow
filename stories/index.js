@@ -1,8 +1,27 @@
+// @flow
+
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Hello from '../src/index'
+import Arrow from '../src/index'
 
-storiesOf('react-library-skeleton', module)
-  .add('Hello', () => (
-    <Hello />
+const props = {
+  shaftLength: 20,
+  shaftWidth: 10,
+  headWidth: 30,
+  headLength: 20,
+  fill: 'blue',
+  stroke: 'red',
+}
+
+storiesOf('Arrow', module)
+  .add('left', () => <Arrow direction="left" {...props} />)
+  .add('right', () => <Arrow direction="right" {...props} />)
+  .add('up', () => <Arrow direction="up" {...props} />)
+  .add('down', () => <Arrow direction="down" {...props} />)
+  .add('rotated', () => <Arrow direction="down" transform="rotate(45)" {...props} />)
+  .add('multiple', () => (
+    <div>
+      <Arrow direction="down" {...props} />
+      <Arrow direction="right" {...props} strokeWidth={5} />
+    </div>
   ))
