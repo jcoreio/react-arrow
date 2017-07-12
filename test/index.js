@@ -191,5 +191,21 @@ L15,0
 L5,0
 L5,-10 z`)
   })
+  it('allows style.width and style.height to be overridden', () => {
+    const comp = mount(
+      <Arrow
+          direction="down"
+          shaftWidth={10}
+          shaftLength={10}
+          headWidth={30}
+          headLength={15}
+          style={{width: 3, height: 4}}
+      />
+    )
+    const svg = comp.find('svg')
+    const style = svg.prop('style')
+    expect(style.width).to.equal(3)
+    expect(style.height).to.equal(4)
+  })
 })
 

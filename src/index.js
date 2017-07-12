@@ -119,8 +119,8 @@ L${point(-shaftLength, shaftWidth / 2)}${unclosed ? '' : ' z'}`
       propsForPath.clipPath = `url(#${clipPathId})`
     }
     const style = propsForSvg.style = (propsForSvg.style ? {...propsForSvg.style} : {})
-    style.width = width
-    style.height = height
+    if (style.width == null) style.width = width
+    if (style.height == null) style.height = height
 
     return (
       <svg {...propsForSvg}>
