@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react'
+import * as React from 'react'
 import {describe, it} from 'mocha'
 import {mount} from 'enzyme'
 import {expect} from 'chai'

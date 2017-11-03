@@ -2892,9 +2892,9 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
-flow-bin@^0.46.0:
-  version "0.46.0"
-  resolved "https://registry.npmjs.org/flow-bin/-/flow-bin-0.46.0.tgz#06ad7fe19dddb1042264438064a2a32fee12b872"
+flow-bin@0.56.0:
+  version "0.56.0"
+  resolved "https://registry.npmjs.org/flow-bin/-/flow-bin-0.56.0.tgz#ce43092203a344ba9bf63c0cabe95d95145f6cad"
 
 flow-watch@^1.1.0:
   version "1.1.1"
@@ -3795,9 +3795,9 @@ isomorphic-fetch@^2.1.1:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
-isotrope@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/isotrope/-/isotrope-1.0.0.tgz#b2d334cd929adb45bff9e1e261a2908e10f09cb7"
+isotrope@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/isotrope/-/isotrope-1.0.1.tgz#56d23e74c86600fead4c37b34d60cfd1d9a59d79"
 
 isstream@~0.1.2:
   version "0.1.2"

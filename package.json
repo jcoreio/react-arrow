@@ -80,7 +80,7 @@
     "eslint-plugin-flowtype": "^2.30.0",
     "eslint-plugin-react": "^7.0.0",
     "eslint-watch": "^3.0.0",
-    "flow-bin": "^0.46.0",
+    "flow-bin": "^0.56.0",
     "flow-watch": "^1.1.0",
     "husky": "^0.13.1",
     "istanbul": "^0.4.5",
@@ -100,7 +100,7 @@
     "react": "0.14.x || ^15.0.0"
   },
   "dependencies": {
-    "isotrope": "^1.0.0",
+    "isotrope": "^1.0.1",
     "prop-types": "^15.0.0"
   }
 }

@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react'
+import * as React from 'react'
 
 import type {Direction, Side, Axis} from 'isotrope'
 import {oppositeOf, signumOf, sideInDirection, axisFor, loSide, hiSide} from 'isotrope'
@@ -69,10 +69,11 @@ const pointFns: {[direction: Direction]: (x: number, y: number) => string} = {
 
 let nextId = 0
 
-export default class Arrow extends React.Component<void, Props, void> {
+export default class Arrow extends React.Component<Props> {
+  static defaultProps: Props;
   _id: number = nextId++
 
-  render(): React.Element<any> {
+  render(): React.Node {
     const {props} = this
     const {shaftWidth, shaftLength, headWidth, headLength, unclosed, direction, transform} = props
 
