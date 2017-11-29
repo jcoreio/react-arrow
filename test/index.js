@@ -3,6 +3,11 @@
 import * as React from 'react'
 import {describe, it} from 'mocha'
 import {mount} from 'enzyme'
+import {configure} from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+configure({ adapter: new Adapter() })
+
+
 import {expect} from 'chai'
 
 import Arrow from '../src/index'
