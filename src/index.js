@@ -3,7 +3,7 @@
 import * as React from 'react'
 
 import type {Direction, Side, Axis} from 'isotrope'
-import {oppositeOf, signumOf, sideInDirection, axisFor, loSide, hiSide} from 'isotrope'
+import {oppositeSide, oppositeAxis, signumOf, sideInDirection, axisFor, loSide, hiSide} from 'isotrope'
 
 type Props = {
   shaftWidth: number,
@@ -80,12 +80,12 @@ export default class Arrow extends React.Component<Props> {
     const side = sideInDirection[direction]
     const sideSignum = signumOf[side]
     const axis: Axis = axisFor[side]
-    const oaxis = oppositeOf[axis]
+    const oaxis: Axis = oppositeAxis[axis]
 
     const bounds: { [side: Side]: number } = {}
 
     bounds[side] = headLength * sideSignum
-    bounds[oppositeOf[side]] = -shaftLength * sideSignum
+    bounds[oppositeSide[side]] = -shaftLength * sideSignum
     bounds[loSide[oaxis]] = -headWidth / 2
     bounds[hiSide[oaxis]] = headWidth / 2
 
