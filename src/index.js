@@ -102,7 +102,7 @@ L${point(-shaftLength, shaftWidth / 2)}${unclosed ? '' : ' z'}`
     const width = bounds.right - bounds.left
     const height = bounds.bottom - bounds.top
 
-    const propsForPath = {d: pathd}
+    const propsForPath: Object = {d: pathd}
     const propsForSvg: Object = {
       viewBox: `${bounds.left} ${bounds.top} ${width} ${height}`,
       preserveAspectRatio: "xMidYMid meet",
