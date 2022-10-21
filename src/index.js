@@ -1,21 +1,29 @@
 // @flow
 
-import * as React from 'react'
+import * as React from "react"
 
-import type {Direction, Side, Axis} from 'isotrope'
-import {oppositeSide, oppositeAxis, signumOf, sideInDirection, axisFor, loSide, hiSide} from 'isotrope'
+import type { Direction, Side, Axis } from "isotrope"
+import {
+  oppositeSide,
+  oppositeAxis,
+  signumOf,
+  sideInDirection,
+  axisFor,
+  loSide,
+  hiSide,
+} from "isotrope"
 
 type Props = {
   shaftWidth: number,
   shaftLength: number,
   headWidth: number,
   headLength: number,
-  direction: 'left' | 'right' | 'up' | 'down',
+  direction: "left" | "right" | "up" | "down" | "leftRight" | "upDown",
   unclosed?: boolean,
   transform?: string,
 }
 
-const ownProps: {[key: string]: boolean} = {
+const ownProps: { [key: string]: boolean } = {
   shaftWidth: true,
   shaftLength: true,
   headWidth: true,
@@ -25,7 +33,7 @@ const ownProps: {[key: string]: boolean} = {
   transform: true,
 }
 
-const pathProps: {[key: string]: boolean} = {
+const pathProps: { [key: string]: boolean } = {
   alignmentBaseline: true,
   baselineShift: true,
   clip: true,
@@ -60,22 +68,38 @@ const pathProps: {[key: string]: boolean} = {
   visibility: true,
 }
 
-const pointFns: {[direction: Direction]: (x: number, y: number) => string} = {
-  left: (x, y) => (-x) + ',' + y,
-  right: (x, y) => x + ',' + y,
-  up: (x, y) => y + ',' + (-x),
-  down: (x, y) => y + ',' + x,
+const pointFns: { [direction: Direction]: (x: number, y: number) => string } = {
+  left: (x, y) => -x + "," + y,
+  right: (x, y) => x + "," + y,
+  up: (x, y) => y + "," + -x,
+  down: (x, y) => y + "," + x,
 }
 
 let nextId = 0
 
 export default class Arrow extends React.Component<Props> {
   static defaultProps: Props;
-  _id: number = nextId++
+  _id: number = nextId++;
 
   render(): React.Node {
-    const {props} = this
-    const {shaftWidth, shaftLength, headWidth, headLength, unclosed, direction, transform} = props
+    const { props } = this
+    const {
+      shaftWidth,
+      shaftLength,
+      headWidth,
+      headLength,
+      unclosed,
+      transform,
+    } = props
+
+    const direction =
+      props.direction === "leftRight"
+        ? "right"
+        : props.direction === "upDown"
+        ? "down"
+        : props.direction
+    const doubleSided =
+      props.direction === "leftRight" || props.direction === "upDown"
 
     const side = sideInDirection[direction]
     const sideSignum = signumOf[side]
@@ -84,25 +108,34 @@ export default class Arrow extends React.Component<Props> {
 
     const bounds: { [side: Side]: number } = {}
 
-    bounds[side] = headLength * sideSignum
-    bounds[oppositeSide[side]] = -shaftLength * sideSignum
+    bounds[side] = 0
+    bounds[oppositeSide[side]] =
+      (-headLength * (doubleSided ? 2 : 1) - shaftLength) * sideSignum
     bounds[loSide[oaxis]] = -headWidth / 2
     bounds[hiSide[oaxis]] = headWidth / 2
 
     const point = pointFns[direction]
 
-    const pathd = `M${point(-shaftLength, -shaftWidth / 2)}
-L${point(0, -shaftWidth / 2)}
-L${point(0, -headWidth / 2)}
-L${point(headLength, 0)}
-L${point(0, headWidth / 2)}
-L${point(0, shaftWidth / 2)}
-L${point(-shaftLength, shaftWidth / 2)}${unclosed ? '' : ' z'}`
+    const pathd = `M0,0
+l${point(-headLength, -headWidth / 2)}
+l${point(0, headWidth / 2 - shaftWidth / 2)}
+l${point(-shaftLength, 0)}
+${
+  doubleSided
+    ? `l${point(0, shaftWidth / 2 - headWidth / 2)}
+l${point(-headLength, headWidth / 2)}
+l${point(headLength, headWidth / 2)}
+l${point(0, shaftWidth / 2 - headWidth / 2)}`
+    : `l${point(0, shaftWidth)}`
+}
+l${point(shaftLength, 0)}
+l${point(0, headWidth / 2 - shaftWidth / 2)}
+l${point(headLength, -headWidth / 2)}${unclosed ? "" : " z"}`
 
     const width = bounds.right - bounds.left
     const height = bounds.bottom - bounds.top
 
-    const propsForPath: Object = {d: pathd}
+    const propsForPath: Object = { d: pathd }
     const propsForSvg: Object = {
       viewBox: `${bounds.left} ${bounds.top} ${width} ${height}`,
       preserveAspectRatio: "xMidYMid meet",
@@ -119,23 +152,29 @@ L${point(-shaftLength, shaftWidth / 2)}${unclosed ? '' : ' z'}`
       else propsForPath.strokeWidth = 2
       propsForPath.clipPath = `url(#${clipPathId})`
     }
-    const style = propsForSvg.style = (propsForSvg.style ? {...propsForSvg.style} : {})
+    const style = (propsForSvg.style = propsForSvg.style
+      ? { ...propsForSvg.style }
+      : {})
     if (style.width == null) style.width = width
     if (style.height == null) style.height = height
 
     return (
       <svg {...propsForSvg}>
-        {propsForPath.stroke && <defs transform={transform}>
-          <clipPath id={clipPathId}>
-            <path d={pathd} />
-          </clipPath>
-        </defs>}
-        {transform
-          ? <g transform={transform}><path {...propsForPath} /></g>
-          : <path {...propsForPath} />
-        }
+        {propsForPath.stroke && (
+          <defs transform={transform}>
+            <clipPath id={clipPathId}>
+              <path d={pathd} />
+            </clipPath>
+          </defs>
+        )}
+        {transform ? (
+          <g transform={transform}>
+            <path {...propsForPath} />
+          </g>
+        ) : (
+          <path {...propsForPath} />
+        )}
       </svg>
     )
   }
 }
-
