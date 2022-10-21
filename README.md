@@ -14,22 +14,22 @@ npm install --save react-arrow
 ```
 
 ```js
-import React from 'react'
-import Arrow from 'react-arrow'
+import React from "react";
+import Arrow from "react-arrow";
 
 const element = (
   <Arrow
-      direction="down"
-      shaftWidth={10}
-      shaftLength={10}
-      headWidth={30}
-      headLength={15}
-      fill="blue"
-      stroke="red"
-      strokeWidth={2}
-      onClick={() => alert('You clicked the arrow!')}
+    direction="down"
+    shaftWidth={10}
+    shaftLength={10}
+    headWidth={30}
+    headLength={15}
+    fill="blue"
+    stroke="red"
+    strokeWidth={2}
+    onClick={() => alert("You clicked the arrow!")}
   />
-)
+);
 ```
 
 ## Geometry
@@ -65,7 +65,7 @@ const element = (
 
 ## Props
 
-##### `direction: 'left' | 'right' | 'up' | 'down'` **(required)**
+##### `direction: 'left' | 'right' | 'up' | 'down' | 'leftRight' | 'upDown'` **(required)**
 
 The direction you want the arrow to point
 
@@ -91,8 +91,8 @@ If `true`, the path will be left unclosed.
 
 ### Other SVG props
 
-*Most* props applicable to the `<path>` element will be passed down to it.  Any other props besides the aforementioned
-props will be passed down to the `<svg>` element.  For the list of props that will be passed to the `<path>` element,
+_Most_ props applicable to the `<path>` element will be passed down to it. Any other props besides the aforementioned
+props will be passed down to the `<svg>` element. For the list of props that will be passed to the `<path>` element,
 see `pathProps` in the source code.
 
 ### `stroke` note
