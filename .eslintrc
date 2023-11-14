@@ -1,6 +1,0 @@
-{
-  "extends": [
-    "@jedwards1211/eslint-config-react", "@jedwards1211/eslint-config-flow"
-  ],
-  "parser": "babel-eslint"
-}

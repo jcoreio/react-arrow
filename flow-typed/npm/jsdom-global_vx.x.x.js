@@ -14,7 +14,7 @@
  */
 
 declare module 'jsdom-global' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 /**
@@ -23,37 +23,37 @@ declare module 'jsdom-global' {
  * needed.
  */
 declare module 'jsdom-global/browser' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module 'jsdom-global/keys' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module 'jsdom-global/register' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module 'jsdom-global/test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 // Filename aliases
 declare module 'jsdom-global/browser.js' {
-  declare module.exports: $Exports<'jsdom-global/browser'>;
+  declare module.exports: $Exports<'jsdom-global/browser'>
 }
 declare module 'jsdom-global/index' {
-  declare module.exports: $Exports<'jsdom-global'>;
+  declare module.exports: $Exports<'jsdom-global'>
 }
 declare module 'jsdom-global/index.js' {
-  declare module.exports: $Exports<'jsdom-global'>;
+  declare module.exports: $Exports<'jsdom-global'>
 }
 declare module 'jsdom-global/keys.js' {
-  declare module.exports: $Exports<'jsdom-global/keys'>;
+  declare module.exports: $Exports<'jsdom-global/keys'>
 }
 declare module 'jsdom-global/register.js' {
-  declare module.exports: $Exports<'jsdom-global/register'>;
+  declare module.exports: $Exports<'jsdom-global/register'>
 }
 declare module 'jsdom-global/test.js' {
-  declare module.exports: $Exports<'jsdom-global/test'>;
+  declare module.exports: $Exports<'jsdom-global/test'>
 }

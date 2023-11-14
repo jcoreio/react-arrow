@@ -1,8 +1,12 @@
 [ignore]
 <PROJECT_ROOT>/lib/.*
-<PROJECT_ROOT>/node_modules/immutable/.*
+<PROJECT_ROOT>/node_modules/.*/immutable/.*
+<PROJECT_ROOT>/node_modules/.*/html-entities/.*
+<PROJECT_ROOT>/node_modules/.*/babel-parse-wild-code/.*
 .*/node_modules/.*/tests?/.*\.json
 .*/node_modules/fbjs/.*
+<PROJECT_ROOT>/dist/.*
+.*/malformed_package_json/.*
 
 [include]
 ./src

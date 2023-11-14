@@ -14,8 +14,8 @@ npm install --save react-arrow
 ```
 
 ```js
-import React from "react";
-import Arrow from "react-arrow";
+import React from 'react'
+import Arrow from 'react-arrow'
 
 const element = (
   <Arrow
@@ -27,9 +27,9 @@ const element = (
     fill="blue"
     stroke="red"
     strokeWidth={2}
-    onClick={() => alert("You clicked the arrow!")}
+    onClick={() => alert('You clicked the arrow!')}
   />
-);
+)
 ```
 
 ## Geometry
